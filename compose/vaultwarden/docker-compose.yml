@@ -1,0 +1,9 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Vaultwarden:/config"

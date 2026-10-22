@@ -1,0 +1,17 @@
+services:
+  murmur:
+    image: goofball222/murmur:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "64738:64738/tcp"
+      - "64738:64738/udp"
+    volumes:
+      - "/etc/localtime:ro:/etc/localtime"
+      - "/portainer/Files/Config/Murmur:/opt/murmur/config"
+      - "/portainer/Files/Murmur/data:/opt/murmur/data"
+      - "/portainer/Files/Murmur/log:/opt/murmur/log"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - TZ=${TZ:-}

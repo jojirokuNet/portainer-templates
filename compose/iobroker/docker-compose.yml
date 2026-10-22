@@ -1,0 +1,12 @@
+services:
+  iobroker:
+    image: buanet/iobroker:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8081:8081/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/iobrokerdata:/opt/iobroker"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}

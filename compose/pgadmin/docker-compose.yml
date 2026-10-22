@@ -1,0 +1,15 @@
+services:
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5050:80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/pgadmin:/var/lib/pgadmin"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-}
+      - TZ=${TZ:-America/New_York}

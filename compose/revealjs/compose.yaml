@@ -1,0 +1,10 @@
+services:
+  revealjs:
+    image: cloudogu/reveal.js:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6060:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/revealjs/docs/slides:/reveal/docs/slides"
+      - "/portainer/Files/AppData/Config/revealjs/scripts/test:/resources"

@@ -1,0 +1,9 @@
+services:
+  chowdown:
+    image: gregyankovoy/chowdown:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4000:4000/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Chowdown:/config"

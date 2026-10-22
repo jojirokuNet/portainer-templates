@@ -1,0 +1,20 @@
+services:
+  wikijs:
+    image: linuxserver/wikijs:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      - "/srv/lsio/wikijs/config:/config"
+      - "/srv/lsio/wikijs/data:/data"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - DB_TYPE=${DB_TYPE:-sqlite}
+      - DB_HOST=${DB_HOST:-}
+      - DB_PORT=${DB_PORT:-}
+      - DB_NAME=${DB_NAME:-}
+      - DB_USER=${DB_USER:-}
+      - DB_PASS=${DB_PASS:-}

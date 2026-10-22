@@ -1,0 +1,9 @@
+services:
+  floating-license-server:
+    image: softingindustrial/floating-license-server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6200/tcp"
+    volumes:
+      - "/licsrv/licenses"

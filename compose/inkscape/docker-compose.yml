@@ -1,0 +1,14 @@
+services:
+  inkscape:
+    image: linuxserver/inkscape:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+      - "3001:3001/tcp"
+    volumes:
+      - "/srv/lsio/inkscape/config:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

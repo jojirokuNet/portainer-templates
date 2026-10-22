@@ -1,0 +1,12 @@
+services:
+  fluxdown:
+    image: ghcr.io/zerx-lab/fluxdown-server:0.2.3
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "17800:17800/tcp"
+    volumes:
+      - "/data"
+      - "/root/Downloads"
+    environment:
+      - TZ=${TZ:-UTC}

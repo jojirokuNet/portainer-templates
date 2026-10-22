@@ -1,0 +1,14 @@
+services:
+  projectsend:
+    image: linuxserver/projectsend:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - "/srv/lsio/projectsend/config:/config"
+      - "/srv/lsio/projectsend/data:/data"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

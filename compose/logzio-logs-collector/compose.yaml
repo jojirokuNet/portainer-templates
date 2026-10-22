@@ -1,0 +1,10 @@
+services:
+  logzio-logs-collector:
+    image: logzio/docker-collector-logs:latest
+    restart: unless-stopped
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers:/var/lib/docker/containers"
+    environment:
+      - LOGZIO_TOKEN=${LOGZIO_TOKEN:-REPLACE-LOGZIO-TOKEN-HERE}
+      - LOGZIO_URL=${LOGZIO_URL:-listener.logz.io:5015}

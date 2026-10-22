@@ -1,0 +1,14 @@
+services:
+  urbackup:
+    image: uroni/urbackup-server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "55415:55415/tcp"
+      - "55414:55414/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/urbackup:/var/urbackup"
+      - "/portainer/backups:/backup"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}

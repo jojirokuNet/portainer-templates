@@ -1,0 +1,9 @@
+services:
+  cairn:
+    image: ghcr.io/morgankryze/cairn:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/config"

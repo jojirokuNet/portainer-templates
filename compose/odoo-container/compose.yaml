@@ -1,0 +1,14 @@
+services:
+  odoo-container:
+    image: odoo:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8069/tcp"
+    volumes:
+      - "/var/lib/odoo"
+      - "/mnt/extra-addons"
+    environment:
+      - HOST=${HOST:-}
+      - USER=${USER:-}
+      - PASSWORD=${PASSWORD:-}

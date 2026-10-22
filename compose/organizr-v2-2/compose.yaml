@@ -1,0 +1,12 @@
+services:
+  organizr-v2-2:
+    image: organizr/organizr:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "7171:80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Organizr:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}

@@ -1,0 +1,17 @@
+services:
+  syslog-ng:
+    image: linuxserver/syslog-ng:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "514:5514/udp"
+      - "601:6601/tcp"
+      - "6514:6514/tcp"
+    volumes:
+      - "/srv/lsio/syslog-ng/config:/config"
+      - "/var/log:/var/log"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - LOG_TO_STDOUT=${LOG_TO_STDOUT:-}

@@ -1,0 +1,15 @@
+services:
+  mylar3:
+    image: linuxserver/mylar3:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8090:8090/tcp"
+    volumes:
+      - "/srv/lsio/mylar3/config:/config"
+      - "/srv/lsio/mylar3/comics:/comics"
+      - "/srv/lsio/mylar3/downloads:/downloads"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

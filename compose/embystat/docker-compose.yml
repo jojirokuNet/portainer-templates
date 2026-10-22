@@ -1,0 +1,9 @@
+services:
+  embystat:
+    image: linuxserver/embystat:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6555:6555/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/EmbyStat:/config"

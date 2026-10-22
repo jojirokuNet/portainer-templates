@@ -1,0 +1,19 @@
+services:
+  airsonic-advanced:
+    image: linuxserver/airsonic-advanced:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4040:4040/tcp"
+    volumes:
+      - "/srv/lsio/airsonic-advanced/config:/config"
+      - "/srv/lsio/airsonic-advanced/music:/music"
+      - "/srv/lsio/airsonic-advanced/playlists:/playlists"
+      - "/srv/lsio/airsonic-advanced/podcasts:/podcasts"
+      - "/srv/lsio/airsonic-advanced/media:/media"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - CONTEXT_PATH=${CONTEXT_PATH:-}
+      - JAVA_OPTS=${JAVA_OPTS:-}

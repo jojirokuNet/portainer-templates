@@ -1,0 +1,32 @@
+services:
+  fail2ban:
+    image: linuxserver/fail2ban:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - "/srv/lsio/fail2ban/config:/config"
+      - "/srv/lsio/fail2ban/var/log:ro:/var/log:ro"
+      - "/srv/lsio/fail2ban/remotelogs/airsonic:ro:/remotelogs/airsonic:ro"
+      - "/srv/lsio/fail2ban/remotelogs/apache2:ro:/remotelogs/apache2:ro"
+      - "/srv/lsio/fail2ban/remotelogs/authelia:ro:/remotelogs/authelia:ro"
+      - "/srv/lsio/fail2ban/remotelogs/emby:ro:/remotelogs/emby:ro"
+      - "/srv/lsio/fail2ban/remotelogs/filebrowser:ro:/remotelogs/filebrowser:ro"
+      - "/srv/lsio/fail2ban/remotelogs/homeassistant:ro:/remotelogs/homeassistant:ro"
+      - "/srv/lsio/fail2ban/remotelogs/lighttpd:ro:/remotelogs/lighttpd:ro"
+      - "/srv/lsio/fail2ban/remotelogs/nextcloud:ro:/remotelogs/nextcloud:ro"
+      - "/srv/lsio/fail2ban/remotelogs/nginx:ro:/remotelogs/nginx:ro"
+      - "/srv/lsio/fail2ban/remotelogs/nzbget:ro:/remotelogs/nzbget:ro"
+      - "/srv/lsio/fail2ban/remotelogs/overseerr:ro:/remotelogs/overseerr:ro"
+      - "/srv/lsio/fail2ban/remotelogs/prowlarr:ro:/remotelogs/prowlarr:ro"
+      - "/srv/lsio/fail2ban/remotelogs/radarr:ro:/remotelogs/radarr:ro"
+      - "/srv/lsio/fail2ban/remotelogs/sabnzbd:ro:/remotelogs/sabnzbd:ro"
+      - "/srv/lsio/fail2ban/remotelogs/sonarr:ro:/remotelogs/sonarr:ro"
+      - "/srv/lsio/fail2ban/remotelogs/unificontroller:ro:/remotelogs/unificontroller:ro"
+      - "/srv/lsio/fail2ban/remotelogs/vaultwarden:ro:/remotelogs/vaultwarden:ro"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - VERBOSITY=${VERBOSITY:--vv}

@@ -1,0 +1,15 @@
+services:
+  sickgear:
+    image: linuxserver/sickgear:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8081:8081/tcp"
+    volumes:
+      - "/srv/lsio/sickgear/config:/config"
+      - "/srv/lsio/sickgear/tv:/tv"
+      - "/srv/lsio/sickgear/downloads:/downloads"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

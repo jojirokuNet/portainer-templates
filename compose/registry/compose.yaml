@@ -1,0 +1,9 @@
+services:
+  registry:
+    image: registry:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5000/tcp"
+    volumes:
+      - "/var/lib/registry"

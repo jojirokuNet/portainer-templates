@@ -1,0 +1,15 @@
+services:
+  wowza:
+    image: sameersbn/wowza:4.1.2-8
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "1935/tcp"
+      - "8086/tcp"
+      - "8087/tcp"
+      - "8088/tcp"
+    volumes:
+      - "/var/lib/wowza"
+    environment:
+      - WOWZA_ACCEPT_LICENSE=${WOWZA_ACCEPT_LICENSE:-yes}
+      - WOWZA_KEY=${WOWZA_KEY:-}

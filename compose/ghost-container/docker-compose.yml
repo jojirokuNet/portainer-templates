@@ -1,0 +1,9 @@
+services:
+  ghost-container:
+    image: ghost:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "2368/tcp"
+    volumes:
+      - "/var/lib/ghost/content"

@@ -1,0 +1,18 @@
+services:
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    restart: unless-stopped
+    ports:
+      - "3000/tcp"
+    volumes:
+      - "/opt/mediadepot/apps/homepage:/app/config"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - PGID=${PGID:-15000}
+      - PUID=${PUID:-15000}
+      - TZ=${TZ:-America/Los_Angeles}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
+      - "traefik.http.routers.homepage.entrypoints=websecure"
+      - "traefik.http.routers.homepage.tls.certresolver=mydnschallenge"

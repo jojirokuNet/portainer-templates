@@ -1,0 +1,11 @@
+services:
+  ironfunctions-ui:
+    image: iron/functions-ui:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4000/tcp"
+    volumes:
+      - "/app/data"
+    environment:
+      - API_URL=${API_URL:-}

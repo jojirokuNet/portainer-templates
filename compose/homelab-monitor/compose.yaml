@@ -1,0 +1,11 @@
+services:
+  homelab-monitor:
+    image: sikamikaniko123/homelab-monitor:latest
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/data"
+    environment:
+      - SAMPLE_INTERVAL=${SAMPLE_INTERVAL:-10}
+      - RETENTION_DAYS=${RETENTION_DAYS:-180}

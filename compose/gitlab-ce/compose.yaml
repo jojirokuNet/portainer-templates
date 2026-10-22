@@ -1,0 +1,13 @@
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+      - "443/tcp"
+      - "22/tcp"
+    volumes:
+      - "/etc/gitlab"
+      - "/var/log/gitlab"
+      - "/var/opt/gitlab"

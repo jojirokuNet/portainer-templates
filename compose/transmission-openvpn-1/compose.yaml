@@ -1,0 +1,17 @@
+services:
+  transmission-openvpn-1:
+    image: haugene/transmission-openvpn:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "9091:9091/tcp"
+    volumes:
+      - "/portainer/Downloads:/data"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}
+      - OPENVPN_PROVIDER=${OPENVPN_PROVIDER:-MULLVAD}
+      - OPENVPN_USERNAME=${OPENVPN_USERNAME:-}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD:-}
+      - LOCAL_NETWORK=${LOCAL_NETWORK:-192.168.0.0/24}

@@ -1,0 +1,14 @@
+services:
+  nextcloud:
+    image: linuxserver/nextcloud:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "443:443/tcp"
+    volumes:
+      - "/srv/lsio/nextcloud/config:/config"
+      - "/srv/lsio/nextcloud/data:/data"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

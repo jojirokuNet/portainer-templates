@@ -1,0 +1,7 @@
+services:
+  passky-client:
+    image: rabbitcompany/passky-client:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8081:80/tcp"

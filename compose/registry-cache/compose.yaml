@@ -1,0 +1,11 @@
+services:
+  registry-cache:
+    image: registry:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5000/tcp"
+    volumes:
+      - "/var/lib/registry"
+    environment:
+      - REGISTRY_PROXY_REMOTEURL=${REGISTRY_PROXY_REMOTEURL:-https://registry-1.docker.io}

@@ -69,7 +69,7 @@ jobs:
           git config user.name "Liss-Bot"
           git config user.email "alicia-gh-bot@mail.as93.net"
           remote="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
-          git add templates.json
+          git add templates.json registry.json compose/ .env.example
           if git diff --staged --quiet; then
             echo "Nothin new added, so nothing to commit, exiting..."
           else

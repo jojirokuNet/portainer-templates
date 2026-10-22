@@ -1,0 +1,12 @@
+services:
+  pi-alert:
+    image: jokobsk/pi.alert:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "20211:20211/udp"
+    volumes:
+      - "/portainer/Files/AppData/Config/pi.alert:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

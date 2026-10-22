@@ -1,0 +1,9 @@
+services:
+  redmine:
+    image: redmine:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000/tcp"
+    volumes:
+      - "/usr/src/redmine/files"

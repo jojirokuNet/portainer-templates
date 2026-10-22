@@ -1,0 +1,12 @@
+services:
+  hivekeep:
+    image: ghcr.io/marlburrow/hivekeep:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      - "/var/lib/hivekeep:/app/data"
+    environment:
+      - HOST=${HOST:-0.0.0.0}
+      - PUBLIC_URL=${PUBLIC_URL:-http://localhost:3000}

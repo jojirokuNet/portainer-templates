@@ -1,0 +1,57 @@
+name: 📜 Convert to Arcane registry.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'templates.json'
+      - 'convert_to_arcane.py'
+      - '.github/workflows/convert-arcane.yml'
+  schedule:
+    - cron: '0 3 * * *' # Nightly at 03:00 UTC (1 hour after templates.json build)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository 🛎️
+        uses: actions/checkout@v4
+
+      - name: Set up Python 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies 📥
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r lib/requirements.txt
+
+      - name: Convert templates to Arcane registry 🔨
+        run: python3 convert_to_arcane.py
+
+      - name: Commit and push registry.json ⤴️
+        env:
+          GH_TOKEN: ${{ secrets.BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          git add registry.json compose/ .env.example
+          if git diff --staged --quiet; then
+            echo "No changes in registry.json, skipping commit."
+          else
+            git commit -m "Updates Arcane registry.json (auto-generated)"
+            git push "$remote" HEAD:${{ github.ref_name }}
+          fi

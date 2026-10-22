@@ -1,0 +1,14 @@
+services:
+  luanti:
+    image: linuxserver/luanti:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "30000:30000/udp"
+    volumes:
+      - "/srv/lsio/luanti/config/.minetest:/config/.minetest"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - CLI_ARGS=${CLI_ARGS:---gameid devtest}

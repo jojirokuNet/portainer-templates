@@ -1,0 +1,9 @@
+services:
+  shiori:
+    image: nicholaswilde/shiori:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "7564:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Shiori:/srv/shiori"

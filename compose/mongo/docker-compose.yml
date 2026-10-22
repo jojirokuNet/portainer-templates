@@ -1,0 +1,9 @@
+services:
+  mongo:
+    image: mongo:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "27017/tcp"
+    volumes:
+      - "/data/db"

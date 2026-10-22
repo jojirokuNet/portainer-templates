@@ -1,0 +1,10 @@
+services:
+  file-browser-container:
+    image: filebrowser/filebrowser:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/data"
+      - "/srv"

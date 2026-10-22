@@ -1,0 +1,12 @@
+services:
+  cantinarr:
+    image: ghcr.io/windoze95/cantinarr:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8585:8585/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Cantinarr/config:/config"
+    environment:
+      - CANTINARR_PUSH_GATEWAY_URL=${CANTINARR_PUSH_GATEWAY_URL:-https://push.cantinarr.com}
+      - CANTINARR_ARR_CALLBACK_URL=${CANTINARR_ARR_CALLBACK_URL:-}

@@ -1,0 +1,14 @@
+services:
+  unmanic:
+    image: josh5/unmanic:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8888:8888/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/unmanic/config:/config"
+      - "/portainer/Files/AppData/Config/unmanic/library:/library"
+      - "/portainer/Files/AppData/Config/unmanic/tmp:/tmp/unmanic"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}

@@ -1,0 +1,14 @@
+services:
+  minio-container:
+    image: quay.io/minio/minio:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "9000/tcp"
+      - "9001/tcp"
+    volumes:
+      - "/data"
+      - "/root/.minio"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER:-}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-}

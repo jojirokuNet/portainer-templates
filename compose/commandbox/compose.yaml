@@ -1,0 +1,10 @@
+services:
+  commandbox:
+    image: ortussolutions/commandbox:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+      - "8443/tcp"
+    environment:
+      - CFENGINE=${CFENGINE:-lucee@4.5}

@@ -1,0 +1,9 @@
+services:
+  flame-dashboard:
+    image: pawelmalak/flame:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5005:5005/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/flame-dashboard:/app/data"

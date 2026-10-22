@@ -1,0 +1,18 @@
+services:
+  deluge:
+    image: linuxserver/deluge:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8112:8112/tcp"
+      - "6881:6881/tcp"
+      - "6881:6881/udp"
+      - "58846:58846/tcp"
+    volumes:
+      - "/srv/lsio/deluge/config:/config"
+      - "/srv/lsio/deluge/downloads:/downloads"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - DELUGE_LOGLEVEL=${DELUGE_LOGLEVEL:-error}

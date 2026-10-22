@@ -1,0 +1,12 @@
+services:
+  trilium:
+    image: zadam/trilium:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3388:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/trilium-data:/home/node/trilium-data"
+    environment:
+      - TRILIUM_DATA_DIR=${TRILIUM_DATA_DIR:-/home/node/trilium-data}
+      - PORT=${PORT:-}

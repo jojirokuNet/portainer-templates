@@ -1,0 +1,5 @@
+services:
+  ubuntu:
+    image: ubuntu:latest
+    restart: unless-stopped
+    platform: "linux"

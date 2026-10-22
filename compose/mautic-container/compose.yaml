@@ -1,0 +1,12 @@
+services:
+  mautic-container:
+    image: mautic/mautic:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/var/www/html"
+    environment:
+      - MAUTIC_DB_HOST=${MAUTIC_DB_HOST:-}
+      - MAUTIC_DB_PASSWORD=${MAUTIC_DB_PASSWORD:-}

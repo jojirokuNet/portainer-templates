@@ -1,0 +1,12 @@
+services:
+  dashy:
+    image: lissy93/dashy:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4000:8080/tcp"
+    volumes:
+      - "/app/user-data"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - TZ=${TZ:-UTC}

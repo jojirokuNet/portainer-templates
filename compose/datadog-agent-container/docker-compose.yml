@@ -1,0 +1,11 @@
+services:
+  datadog-agent-container:
+    image: datadog/agent:latest
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/sys/fs/cgroup:/host/sys/fs/cgroup"
+      - "/proc:/host/proc"
+    environment:
+      - DD_API_KEY=${DD_API_KEY:-}

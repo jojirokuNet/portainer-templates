@@ -1,0 +1,9 @@
+services:
+  glance:
+    image: glanceapp/glance:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/app/config"

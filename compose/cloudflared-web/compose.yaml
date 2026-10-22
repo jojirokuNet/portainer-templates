@@ -1,0 +1,11 @@
+services:
+  cloudflared-web:
+    image: wisdomsky/cloudflared-web:latest
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/config"
+    environment:
+      - WEBUI_PORT=${WEBUI_PORT:-14333}
+      - BASIC_AUTH_USER=${BASIC_AUTH_USER:-admin}
+      - BASIC_AUTH_PASS=${BASIC_AUTH_PASS:-}

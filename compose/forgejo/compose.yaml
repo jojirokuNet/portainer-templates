@@ -1,0 +1,13 @@
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:15
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+      - "222:22/tcp"
+    volumes:
+      - "/data"
+    environment:
+      - USER_UID=${USER_UID:-1000}
+      - USER_GID=${USER_GID:-1000}

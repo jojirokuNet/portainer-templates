@@ -1,0 +1,7 @@
+services:
+  dradis:
+    image: raesene/dradis:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"

@@ -1,0 +1,16 @@
+services:
+  resilio-sync:
+    image: linuxserver/resilio-sync:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8888:8888/tcp"
+      - "55555:55555/tcp"
+    volumes:
+      - "/srv/lsio/resilio-sync/config:/config"
+      - "/srv/lsio/resilio-sync/downloads:/downloads"
+      - "/srv/lsio/resilio-sync/sync:/sync"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

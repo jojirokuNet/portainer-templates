@@ -1,0 +1,10 @@
+services:
+  influxdb1810:
+    image: influxdb:1.8.10
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8086:8086/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Influxdb/data:/var/lib/influxdb"
+      - "/portainer/Files/AppData/Config/Influxdb/config:/etc/influxdb"

@@ -1,0 +1,7 @@
+services:
+  changedetection:
+    image: dgtlmoon/changedetection.io:latest
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/portainer/Files/AppData/Config/changedetection:/datastore"

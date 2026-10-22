@@ -1,0 +1,21 @@
+services:
+  readarr:
+    image: ghcr.io/linuxserver/readarr:nightly
+    restart: unless-stopped
+    ports:
+      - "8787/tcp"
+    volumes:
+      - "/opt/mediadepot/apps/readarr:/config"
+      - "/media/storage/downloads/ebooks:/downloads"
+      - "/media/storage/ebooks:/books"
+      - "/media/temp/blackhole/ebooks:/blackhole"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - PGID=${PGID:-15000}
+      - PUID=${PUID:-15000}
+      - TZ=${TZ:-America/Los_Angeles}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.readarr.loadbalancer.server.port=8787"
+      - "traefik.http.routers.readarr.entrypoints=websecure"
+      - "traefik.http.routers.readarr.tls.certresolver=mydnschallenge"

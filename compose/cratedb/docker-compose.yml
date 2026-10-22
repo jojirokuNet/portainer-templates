@@ -1,0 +1,10 @@
+services:
+  cratedb:
+    image: crate:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4200/tcp"
+      - "4300/tcp"
+    volumes:
+      - "/data"

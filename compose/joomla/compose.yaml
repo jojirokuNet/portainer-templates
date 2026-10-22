@@ -1,0 +1,12 @@
+services:
+  joomla:
+    image: joomla:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/var/www/html"
+    environment:
+      - JOOMLA_DB_HOST=${JOOMLA_DB_HOST:-}
+      - JOOMLA_DB_PASSWORD=${JOOMLA_DB_PASSWORD:-}

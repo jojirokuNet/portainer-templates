@@ -1,0 +1,5 @@
+services:
+  nodejs:
+    image: node:latest
+    restart: unless-stopped
+    platform: "linux"

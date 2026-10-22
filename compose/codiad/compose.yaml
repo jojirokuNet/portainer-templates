@@ -1,0 +1,12 @@
+services:
+  codiad:
+    image: linuxserver/codiad:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Codiad:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

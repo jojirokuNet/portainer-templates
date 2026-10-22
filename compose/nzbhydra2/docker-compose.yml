@@ -1,0 +1,14 @@
+services:
+  nzbhydra2:
+    image: linuxserver/nzbhydra2:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5076:5076/tcp"
+    volumes:
+      - "/srv/lsio/nzbhydra2/config:/config"
+      - "/srv/lsio/nzbhydra2/downloads:/downloads"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

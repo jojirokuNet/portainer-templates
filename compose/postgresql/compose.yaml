@@ -1,0 +1,12 @@
+services:
+  postgresql:
+    image: postgres:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5432/tcp"
+    volumes:
+      - "/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-}

@@ -1,0 +1,9 @@
+services:
+  drupal:
+    image: drupal:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/var/www/html"

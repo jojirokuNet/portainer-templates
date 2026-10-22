@@ -1,0 +1,11 @@
+services:
+  docuseal:
+    image: docuseal/docuseal:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      - "/data"
+    environment:
+      - HOST=${HOST:-}

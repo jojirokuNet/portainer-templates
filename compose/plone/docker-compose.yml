@@ -1,0 +1,9 @@
+services:
+  plone:
+    image: plone:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+    volumes:
+      - "/data"

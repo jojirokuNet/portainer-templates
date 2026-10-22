@@ -1,0 +1,11 @@
+services:
+  magento-2:
+    image: alankent/gsd:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+      - "3000/tcp"
+      - "3001/tcp"
+    volumes:
+      - "/var/www/html/"

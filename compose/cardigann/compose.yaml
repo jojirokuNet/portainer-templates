@@ -1,0 +1,16 @@
+services:
+  cardigann:
+    image: linuxserver/cardigann:latest
+    restart: unless-stopped
+    ports:
+      - "5060/tcp"
+    volumes:
+      - "/opt/mediadepot/apps/cardigann:/config"
+    environment:
+      - PGID=${PGID:-15000}
+      - PUID=${PUID:-15000}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.cardigann.loadbalancer.server.port=5060"
+      - "traefik.http.routers.cardigann.entrypoints=websecure"
+      - "traefik.http.routers.cardigann.tls.certresolver=mydnschallenge"

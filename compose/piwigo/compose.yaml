@@ -1,0 +1,14 @@
+services:
+  piwigo:
+    image: linuxserver/piwigo:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - "/srv/lsio/piwigo/config:/config"
+      - "/srv/lsio/piwigo/gallery:/gallery"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

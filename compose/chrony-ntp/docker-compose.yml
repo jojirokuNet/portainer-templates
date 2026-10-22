@@ -1,0 +1,10 @@
+services:
+  chrony-ntp:
+    image: cturra/ntp:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "123:123/udp"
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-0}
+      - NTP_SERVERS=${NTP_SERVERS:-time.cloudflare.com}

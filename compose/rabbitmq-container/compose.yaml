@@ -1,0 +1,10 @@
+services:
+  rabbitmq-container:
+    image: rabbitmq:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5671/tcp"
+      - "5672/tcp"
+    volumes:
+      - "/var/lib/rabbitmq"

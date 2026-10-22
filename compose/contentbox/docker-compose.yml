@@ -1,0 +1,15 @@
+services:
+  contentbox:
+    image: ortussolutions/contentbox:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+      - "8443/tcp"
+    volumes:
+      - "/data/contentbox/db"
+      - "/app/includes/shared/media"
+    environment:
+      - express=${express:-true}
+      - install=${install:-true}
+      - CFENGINE=${CFENGINE:-lucee@4.5}

@@ -1,0 +1,11 @@
+services:
+  homebox:
+    image: ghcr.io/sysadminsmedia/homebox:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "7745:7745/tcp"
+    volumes:
+      - "/data"
+    environment:
+      - TZ=${TZ:-UTC}

@@ -1,0 +1,7 @@
+services:
+  socks5-proxy:
+    image: serjs/go-socks5-proxy:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"

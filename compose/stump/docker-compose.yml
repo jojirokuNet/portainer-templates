@@ -1,0 +1,14 @@
+services:
+  stump:
+    image: aaronleopold/stump:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "10801:10801/tcp"
+    volumes:
+      - "/config"
+      - "/data"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - STUMP_CONFIG_DIR=${STUMP_CONFIG_DIR:-/config}

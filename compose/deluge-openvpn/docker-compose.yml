@@ -1,0 +1,17 @@
+services:
+  deluge-openvpn:
+    image: sgtsquiggs/deluge-openvpn:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8112:8112/tcp"
+    volumes:
+      - "/etc/localtime:/etc/localtime"
+      - "/portainer/Downloads:/downloads"
+      - "/portainer/Files/AppData/Config/DelugeOpenVPN/config:/config"
+    environment:
+      - PUID=${PUID:-1001}
+      - PUID=${PUID:-1001}
+      - OPENVPN_PROVIDER=${OPENVPN_PROVIDER:-MULLVAD}
+      - OPENVPN_USERNAME=${OPENVPN_USERNAME:-}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD:-}

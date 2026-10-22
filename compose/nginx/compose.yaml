@@ -1,0 +1,11 @@
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+      - "443/tcp"
+    volumes:
+      - "/etc/nginx"
+      - "/usr/share/nginx/html"

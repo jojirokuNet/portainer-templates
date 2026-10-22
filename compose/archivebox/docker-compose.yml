@@ -1,0 +1,15 @@
+services:
+  archivebox:
+    image: archivebox/archivebox:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8002:8000/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/archivebox:/data"
+    environment:
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - MEDIA_MAX_SIZE=${MEDIA_MAX_SIZE:-750m}
+      - PUBLIC_INDEX=${PUBLIC_INDEX:-true}
+      - PUBLIC_SNAPSHOTS=${PUBLIC_SNAPSHOTS:-true}
+      - PUBLIC_ADD_VIEW=${PUBLIC_ADD_VIEW:-false}

@@ -1,0 +1,13 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:80/tcp"
+    volumes:
+      - "/var/cache/ntfy"
+      - "/etc/ntfy"
+    environment:
+      - NTFY_BASE_URL=${NTFY_BASE_URL:-http://localhost:8080}
+      - TZ=${TZ:-UTC}

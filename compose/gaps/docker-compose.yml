@@ -1,0 +1,13 @@
+services:
+  gaps:
+    image: housewrecker/gaps:latest
+    restart: unless-stopped
+    ports:
+      - "8484/tcp"
+    environment:
+      - TZ=${TZ:-America/Los_Angeles}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.gaps.loadbalancer.server.port=8484"
+      - "traefik.http.routers.gaps.entrypoints=websecure"
+      - "traefik.http.routers.gaps.tls.certresolver=mydnschallenge"

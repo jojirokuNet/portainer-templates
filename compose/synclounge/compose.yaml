@@ -1,0 +1,11 @@
+services:
+  synclounge:
+    image: linuxserver/synclounge:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8088:8088/tcp"
+    volumes:
+      - "/srv/lsio/synclounge/config:/config"
+    environment:
+      - AUTH_LIST=${AUTH_LIST:-plexuser1,plexuser2,email1,machineid1}

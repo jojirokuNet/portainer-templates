@@ -1,0 +1,15 @@
+services:
+  beets:
+    image: linuxserver/beets:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8337:8337/tcp"
+    volumes:
+      - "/srv/lsio/beets/config:/config"
+      - "/srv/lsio/beets/music:/music"
+      - "/srv/lsio/beets/downloads:/downloads"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

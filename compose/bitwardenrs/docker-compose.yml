@@ -1,0 +1,9 @@
+services:
+  bitwardenrs:
+    image: bitwardenrs/server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Bitwarden-rs:/config"

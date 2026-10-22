@@ -3,3 +3,4 @@ sources/external/*.json
 
 # Python
 __pycache__/
+.venv/

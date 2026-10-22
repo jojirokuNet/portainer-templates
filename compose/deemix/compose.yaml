@@ -1,0 +1,10 @@
+services:
+  deemix:
+    image: registry.gitlab.com/bockiii/deemix-docker:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6595:6595/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/DeeMix:/config"
+      - "/portainer/Downloads:/downloads"

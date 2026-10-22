@@ -1,0 +1,9 @@
+services:
+  libredb-studio:
+    image: ghcr.io/libredb/libredb-studio:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      - "/app/data"

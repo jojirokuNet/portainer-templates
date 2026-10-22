@@ -1,0 +1,9 @@
+services:
+  nuts:
+    image: upshift/nut-upsd:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3493:3493/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/nuts:/app"

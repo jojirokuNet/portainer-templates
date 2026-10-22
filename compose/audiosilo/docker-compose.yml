@@ -1,0 +1,14 @@
+services:
+  audiosilo:
+    image: linuxserver/audiosilo:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/srv/lsio/audiosilo/config:/config"
+      - "/srv/lsio/audiosilo/audiobooks:ro:/audiobooks:ro"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

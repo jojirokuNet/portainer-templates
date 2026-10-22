@@ -1,0 +1,13 @@
+services:
+  kodi-headless:
+    image: linuxserver/kodi-headless:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+      - "9777/udp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Kodi:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

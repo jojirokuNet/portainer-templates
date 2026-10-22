@@ -1,0 +1,10 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:stable
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/portainer/Files/AppData/Config/tailscale:/var/lib/tailscale"
+      - "/dev/net/tun:/dev/net/tun"
+    environment:
+      - AUTH_KEY=${AUTH_KEY:-}

@@ -1,0 +1,10 @@
+services:
+  cockroachdb-container:
+    image: cockroachdb/cockroach:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "26257/tcp"
+      - "8080/tcp"
+    volumes:
+      - "/cockroach/cockroach-data"

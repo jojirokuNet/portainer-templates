@@ -1,0 +1,9 @@
+services:
+  ironfunctions-api:
+    image: iron/functions:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+    volumes:
+      - "/app/data"

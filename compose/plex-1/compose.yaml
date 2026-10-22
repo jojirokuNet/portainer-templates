@@ -1,0 +1,18 @@
+services:
+  plex-1:
+    image: linuxserver/plex:latest
+    restart: unless-stopped
+    volumes:
+      - "/opt/mediadepot/apps/plex:/config"
+      - "/media/storage/tvshows:/data/tvshows"
+      - "/media/storage/movies:/data/movies"
+      - "/media/storage/music:/data/music"
+      - "/transcode"
+    environment:
+      - PGID=${PGID:-15000}
+      - PUID=${PUID:-15000}
+      - TZ=${TZ:-America/Los_Angeles}
+      - VERSION=${VERSION:-latest}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"

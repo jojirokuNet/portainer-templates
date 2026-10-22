@@ -1,0 +1,11 @@
+services:
+  mysql-container:
+    image: mysql:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3306/tcp"
+    volumes:
+      - "/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-}

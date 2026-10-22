@@ -1,0 +1,12 @@
+services:
+  tt-rss:
+    image: lunik1/tt-rss:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/tt-rss:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

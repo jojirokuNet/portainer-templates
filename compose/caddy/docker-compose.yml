@@ -1,0 +1,9 @@
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/data"

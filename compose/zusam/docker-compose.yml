@@ -1,0 +1,12 @@
+services:
+  zusam:
+    image: zusam/zusam:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "4180:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Zusam:/zusam/data"
+    environment:
+      - INIT_USER=${INIT_USER:-email@domain.example}
+      - INIT_PASSWORD=${INIT_PASSWORD:-initpass zusam}

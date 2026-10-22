@@ -1,0 +1,15 @@
+services:
+  bazarr:
+    image: linuxserver/bazarr:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6767:6767/tcp"
+    volumes:
+      - "/srv/lsio/bazarr/config:/config"
+      - "/srv/lsio/bazarr/movies:/movies"
+      - "/srv/lsio/bazarr/tv:/tv"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

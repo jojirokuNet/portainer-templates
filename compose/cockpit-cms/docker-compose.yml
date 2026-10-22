@@ -1,0 +1,7 @@
+services:
+  cockpit-cms:
+    image: agentejo/cockpit:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8088:80/tcp"

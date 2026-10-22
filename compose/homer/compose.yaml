@@ -1,0 +1,10 @@
+services:
+  homer:
+    image: b4bz/homer:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8902:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Homer/assets:/www/assets"
+      - "/portainer/Files/AppData/Config/Homer:/www/config.yml"

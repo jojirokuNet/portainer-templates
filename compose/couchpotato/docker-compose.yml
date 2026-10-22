@@ -1,0 +1,14 @@
+services:
+  couchpotato:
+    image: linuxserver/couchpotato:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5050:5050/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Couchpotato:/config"
+      - "/portainer/Downloads:/downloads"
+      - "/portainer/Movies:/movies"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

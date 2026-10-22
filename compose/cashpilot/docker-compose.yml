@@ -1,0 +1,13 @@
+services:
+  cashpilot:
+    image: drumsergio/cashpilot:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/data"
+    environment:
+      - TZ=${TZ:-UTC}
+      - CASHPILOT_SECRET_KEY=${CASHPILOT_SECRET_KEY:-}
+      - CASHPILOT_API_KEY=${CASHPILOT_API_KEY:-}

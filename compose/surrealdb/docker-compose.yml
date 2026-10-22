@@ -1,0 +1,12 @@
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8020:8000/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/surrealdb/data:/data"
+    environment:
+      - SDB_USERNAME=${SDB_USERNAME:-default_username}
+      - SDB_PASSWORD=${SDB_PASSWORD:-default_password}

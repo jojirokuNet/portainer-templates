@@ -1,0 +1,9 @@
+services:
+  solr:
+    image: solr:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8983/tcp"
+    volumes:
+      - "/opt/solr/mydata"

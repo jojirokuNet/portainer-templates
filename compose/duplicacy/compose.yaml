@@ -1,0 +1,19 @@
+services:
+  duplicacy:
+    image: mediadepot/duplicacy:latest
+    restart: unless-stopped
+    ports:
+      - "3875/tcp"
+    volumes:
+      - "/opt/mediadepot/apps/duplicacy/config:/config"
+      - "/opt/mediadepot/apps/duplicacy/logs:/logs"
+      - "/opt/mediadepot/apps/duplicacy/cache:/cache"
+      - "/opt/mediadepot/apps/:/source/apps"
+      - "/media/storage/:/source/storage"
+    environment:
+      - TZ=${TZ:-America/Los_Angeles}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.duplicacy.loadbalancer.server.port=3875"
+      - "traefik.http.routers.duplicacy.entrypoints=websecure"
+      - "traefik.http.routers.duplicacy.tls.certresolver=mydnschallenge"

@@ -1,0 +1,11 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "25565:25565/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Minecraft-data:/data"
+    environment:
+      - EULA=${EULA:-TRUE}

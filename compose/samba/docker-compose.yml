@@ -1,0 +1,18 @@
+services:
+  samba:
+    image: dperson/samba:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "139:139/tcp"
+      - "445:445/tcp"
+    volumes:
+      - "/portainer/Downloads:/share"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - USERID=${USERID:-1000}
+      - GROUPID=${GROUPID:-1000}
+      - USER=${USER:-guest;guest}
+      - PERMISSIONS=${PERMISSIONS:-true}
+      - SHARE=${SHARE:-portainer;/share;yes;no;yes;guest}

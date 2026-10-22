@@ -1,0 +1,9 @@
+services:
+  tiddlywiki:
+    image: nicolaw/tiddlywiki:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/TiddlyWiki:/var/lib/tiddlywiki"

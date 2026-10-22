@@ -1,0 +1,11 @@
+services:
+  oled-stats:
+    image: mklements/oled_stats:latest
+    restart: unless-stopped
+    platform: "linux"
+    volumes:
+      - "/etc/timezone:/etc/timezone"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - start=${start:-8}
+      - end=${end:-23}

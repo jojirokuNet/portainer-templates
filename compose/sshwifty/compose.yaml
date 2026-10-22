@@ -1,0 +1,7 @@
+services:
+  sshwifty:
+    image: niruix/sshwifty:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8182:8182/tcp"

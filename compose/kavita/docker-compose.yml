@@ -1,0 +1,14 @@
+services:
+  kavita:
+    image: linuxserver/kavita:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5000:5000/tcp"
+    volumes:
+      - "/srv/lsio/kavita/config:/config"
+      - "/srv/lsio/kavita/data:/data"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}

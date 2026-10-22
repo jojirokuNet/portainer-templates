@@ -1,0 +1,9 @@
+services:
+  httpd:
+    image: httpd:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/usr/local/apache2/htdocs/"

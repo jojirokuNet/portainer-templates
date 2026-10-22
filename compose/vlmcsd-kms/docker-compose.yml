@@ -1,0 +1,7 @@
+services:
+  vlmcsd-kms:
+    image: mikolatero/vlmcsd:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "1688:1688/tcp"

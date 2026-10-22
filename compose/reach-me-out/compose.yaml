@@ -1,0 +1,9 @@
+services:
+  reach-me-out:
+    image: kartikey31choudhary/reach-me-out:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:80/tcp"
+    volumes:
+      - "/path/to/config.yaml:/usr/share/nginx/html/config.yaml"

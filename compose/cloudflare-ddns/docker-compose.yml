@@ -1,0 +1,9 @@
+services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    restart: unless-stopped
+    platform: "linux"
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN:-}
+      - DOMAINS=${DOMAINS:-}
+      - PROXIED=${PROXIED:-true}

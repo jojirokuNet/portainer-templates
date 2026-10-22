@@ -1,0 +1,9 @@
+services:
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8978:8978/tcp"
+    volumes:
+      - "/opt/cloudbeaver/workspace"

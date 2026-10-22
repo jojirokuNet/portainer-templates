@@ -1,0 +1,12 @@
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5055:5055/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Jellyseerr:/app/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

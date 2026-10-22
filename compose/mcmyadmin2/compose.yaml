@@ -1,0 +1,13 @@
+services:
+  mcmyadmin2:
+    image: linuxserver/mcmyadmin2:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+      - "25565:25565/tcp"
+    volumes:
+      - "/minecraft"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-100}

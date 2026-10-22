@@ -1,0 +1,18 @@
+services:
+  faster-whisper:
+    image: linuxserver/faster-whisper:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "10300:10300/tcp"
+    volumes:
+      - "/srv/lsio/faster-whisper/config:/config"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Etc/UTC}
+      - DEBUG=${DEBUG:-}
+      - LOCAL_ONLY=${LOCAL_ONLY:-}
+      - WHISPER_BEAM=${WHISPER_BEAM:-1}
+      - WHISPER_LANG=${WHISPER_LANG:-auto}
+      - WHISPER_MODEL=${WHISPER_MODEL:-auto}

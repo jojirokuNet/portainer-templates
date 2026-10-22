@@ -1,8 +1,8 @@
-.PHONY: all install_requirements download combine validate validate_sources list
+.PHONY: all install_requirements download combine validate validate_sources list arcane
 
 PYTHON := $(shell which python3 2>/dev/null || which python)
 
-all: install_requirements download combine validate list
+all: install_requirements download combine validate list arcane
 
 install_requirements:
 	$(PYTHON) -m pip install -r lib/requirements.txt
@@ -21,3 +21,7 @@ validate_sources:
 
 list:
 	$(PYTHON) lib/list.py
+
+arcane:
+	$(PYTHON) convert_to_arcane.py
+

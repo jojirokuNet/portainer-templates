@@ -1,0 +1,9 @@
+services:
+  reactive-resume:
+    image: amruthpillai/reactive-resume:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/ReactiveResume:/usr/src/app"

@@ -1,0 +1,12 @@
+services:
+  jenkins-container:
+    image: jenkins/jenkins:lts
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080/tcp"
+      - "50000/tcp"
+    volumes:
+      - "/var/jenkins_home"
+    environment:
+      - JENKINS_OPTS=${JENKINS_OPTS:-}

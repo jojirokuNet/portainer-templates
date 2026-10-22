@@ -1,0 +1,20 @@
+services:
+  atrium:
+    image: vibralabs/atrium:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/var/lib/postgresql/data"
+      - "/app/uploads"
+    environment:
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:-}
+      - WEB_URL=${WEB_URL:-http://localhost:8080}
+      - API_URL=${API_URL:-http://localhost:8080}
+      - SECURE_COOKIES=${SECURE_COOKIES:-true}
+      - DATABASE_URL=${DATABASE_URL:-}
+      - STORAGE_PROVIDER=${STORAGE_PROVIDER:-local}
+      - MAX_FILE_SIZE_MB=${MAX_FILE_SIZE_MB:-50}
+      - RESEND_API_KEY=${RESEND_API_KEY:-}
+      - EMAIL_FROM=${EMAIL_FROM:-}

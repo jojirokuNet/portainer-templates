@@ -1,0 +1,9 @@
+services:
+  redis-container:
+    image: redis:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "6379/tcp"
+    volumes:
+      - "/data"

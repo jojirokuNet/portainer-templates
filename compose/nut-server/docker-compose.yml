@@ -1,0 +1,15 @@
+services:
+  nut-server:
+    image: instantlinux/nut-upsd:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "3493:3493/tcp"
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - SERIAL=${SERIAL:-none}
+      - NAME=${NAME:-none}
+      - VENDOR ID=${VENDOR ID:-none}
+      - API_PASSWORD=${API_PASSWORD:-none}
+      - DESCRIPTION=${DESCRIPTION:-none}

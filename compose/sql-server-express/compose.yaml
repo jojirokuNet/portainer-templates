@@ -1,0 +1,12 @@
+services:
+  sql-server-express:
+    image: microsoft/mssql-server-windows-express:latest
+    restart: unless-stopped
+    platform: "windows"
+    ports:
+      - "1433/tcp"
+    volumes:
+      - "C:/temp/"
+    environment:
+      - ACCEPT_EULA=${ACCEPT_EULA:-Y}
+      - sa_password=${sa_password:-}

@@ -1,0 +1,9 @@
+services:
+  libreddit:
+    image: libreddit/libreddit:armv7
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8088:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/libreddit:/config"

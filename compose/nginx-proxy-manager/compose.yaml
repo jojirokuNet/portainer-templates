@@ -1,0 +1,14 @@
+services:
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "80:80/tcp"
+      - "81:81/tcp"
+      - "443:443/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Nginx-Proxy/data:/data"
+      - "/portainer/Files/AppData/Config/Nginx-Proxy/letsencrypt:/etc/letsencrypt"
+    environment:
+      - DB_SQLITE_FILE=${DB_SQLITE_FILE:-/data/database.sqlite}

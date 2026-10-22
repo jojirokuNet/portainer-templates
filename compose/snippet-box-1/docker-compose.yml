@@ -1,0 +1,9 @@
+services:
+  snippet-box-1:
+    image: pawelmalak/snippet-box:arm
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5010:5000/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Snippet-box:/app/data"

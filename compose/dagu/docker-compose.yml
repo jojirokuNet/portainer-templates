@@ -1,0 +1,9 @@
+services:
+  dagu:
+    image: ghcr.io/dagu-org/dagu:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8080:8080/tcp"
+    volumes:
+      - "/var/lib/dagu"

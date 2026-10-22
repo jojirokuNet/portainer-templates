@@ -1,0 +1,17 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "5678/tcp"
+    volumes:
+      - "/opt/mediadepot/apps/n8n:/home/node/.n8n"
+      - "/etc/localtime:/etc/localtime"
+    environment:
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-America/Los_Angeles}
+      - TZ=${TZ:-America/Los_Angeles}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
+      - "traefik.http.routers.n8n.entrypoints=websecure"
+      - "traefik.http.routers.n8n.tls.certresolver=mydnschallenge"

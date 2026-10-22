@@ -1,0 +1,9 @@
+services:
+  dashmachine:
+    image: rmountjoy/dashmachine:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5000:5000/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/Dashmachine:/dashmachine/dashmachine/user_data"

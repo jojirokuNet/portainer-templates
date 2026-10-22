@@ -1,0 +1,14 @@
+services:
+  technitium-dns:
+    image: technitium/dns-server:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "5380:5380/tcp"
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - "/etc/dns"
+    environment:
+      - DNS_SERVER_DOMAIN=${DNS_SERVER_DOMAIN:-dns-server}
+      - DNS_SERVER_ADMIN_PASSWORD=${DNS_SERVER_ADMIN_PASSWORD:-}

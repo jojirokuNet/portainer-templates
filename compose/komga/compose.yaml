@@ -1,0 +1,11 @@
+services:
+  komga:
+    image: gotson/komga:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "8995:8080/tcp"
+    volumes:
+      - "/portainer/Files/AppData/Config/komga/config:/config"
+      - "/portainer/Files/AppData/Config/komga/data:/data"
+      - "/etc/timezone:/etc/timezone"

@@ -1,0 +1,9 @@
+services:
+  watchtower-1:
+    image: containrrr/watchtower:latest
+    restart: unless-stopped
+    platform: "linux"
+    ports:
+      - "9001/tcp"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
