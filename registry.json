@@ -2014,17 +2014,18 @@
     {
       "id": "davos",
       "name": "Davos",
-      "description": "[Davos](https://github.com/linuxserver/davos) is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.",
+      "description": "davos is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.",
       "version": "1.0.0",
-      "author": "https://github.com/technorabilia/portainer-templates/",
+      "author": "https://github.com/xneo1/portainer_templates/",
       "compose_url": "https://raw.githubusercontent.com/jojirokuNet/portainer-templates/main/compose/davos/docker-compose.yml",
       "env_url": "https://raw.githubusercontent.com/jojirokuNet/portainer-templates/main/compose/davos/.env.example",
       "documentation_url": "https://github.com/jojirokuNet/portainer-templates",
       "content_hash": "a71a4baf3e562482f4312d6e701e417502a2cd351a439de51a9d6f7f0bd6d180",
       "tags": [
-        "FTP"
+        "FTP",
+        "Tools"
       ],
-      "icon_url": "https://raw.githubusercontent.com/linuxserver/davos/master/docs/list.PNG"
+      "icon_url": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/davos.png"
     },
     {
       "id": "dawarich",
